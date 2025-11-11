@@ -1,12 +1,14 @@
-# Portfolio Website
+# Anas Adan - Portfolio Website
 
-A personal portfolio website built with React and deployed on GitHub Pages.
+My personal portfolio website built with React and deployed on GitHub Pages.
+
+Live at: [anasadan.github.io](https://anasadan.github.io)
 
 ## Features
 
 - **About Page**: Personal introduction and information
-- **Blog Page**: Blog posts and articles
-- **CV Page**: Curriculum vitae and professional information
+- **Blog Page**: Blog posts and articles written in Markdown
+- **CV Page**: Curriculum vitae (opens PDF in new tab)
 
 ## Getting Started
 
@@ -64,12 +66,12 @@ This will:
 ### Note
 The `homepage` field in `package.json` is already set to `https://anasadan.github.io` for your user site.
 
-## Customization
+## Tech Stack
 
-- Edit the content in `src/pages/About.js`, `src/pages/Blog.js`, and `src/pages/CV.js`
-- Modify colors and styling in the respective CSS files
-- Add your profile picture by replacing the placeholder in `About.js`
-- Update navigation links in `src/components/Navigation.js`
+- React
+- React Router (HashRouter for GitHub Pages compatibility)
+- React Markdown for blog posts
+- GitHub Pages for hosting
 
 ## License
 
