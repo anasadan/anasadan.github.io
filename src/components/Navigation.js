@@ -28,13 +28,12 @@ function Navigation() {
         <Link to="/blog" className={`nav-link ${isActive('/blog') ? 'active' : ''}`}>
           Blog
         </Link>
-        <a 
-          href="#" 
+        <button 
           onClick={handleCVClick}
-          className="nav-link"
+          className="nav-link nav-button"
         >
           CV
-        </a>
+        </button>
       </div>
     </nav>
   );

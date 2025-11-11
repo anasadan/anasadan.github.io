@@ -43,6 +43,14 @@
   background-color: #ff4444;
 }
 
+.nav-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 @media (max-width: 768px) {
   .nav-container {
     padding: 0 1rem;
