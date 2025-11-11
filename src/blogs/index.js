@@ -32,15 +32,42 @@ export const getAllPosts = () => {
 // Load markdown content for a post
 export const loadPostContent = async (markdownFile) => {
   try {
-    // Ensure the path starts with / for absolute path from public folder
-    // Use process.env.PUBLIC_URL for GitHub Pages compatibility
+    // For GitHub Pages with HashRouter, we need to use the full URL or ensure absolute path
+    // Get the current origin to build absolute URL
+    const origin = window.location.origin;
     const basePath = process.env.PUBLIC_URL || '';
-    const path = markdownFile.startsWith('/') 
-      ? `${basePath}${markdownFile}` 
-      : `${basePath}/${markdownFile}`;
     
-    console.log('Loading markdown from:', path);
-    const response = await fetch(path);
+    // Build the path - ensure it starts with /
+    let path = markdownFile.startsWith('/') 
+      ? markdownFile 
+      : `/${markdownFile}`;
+    
+    // Remove any double slashes (but keep // after http:)
+    path = path.replace(/([^:]\/)\/+/g, '$1');
+    
+    // Try absolute URL first (works better with HashRouter on GitHub Pages)
+    const absoluteUrl = `${origin}${basePath}${path}`;
+    
+    console.log('Loading markdown from:', absoluteUrl);
+    console.log('PUBLIC_URL:', process.env.PUBLIC_URL);
+    
+    let response = await fetch(absoluteUrl, {
+      cache: 'no-cache',
+      headers: {
+        'Accept': 'text/markdown, text/plain, */*'
+      }
+    });
+    
+    // If absolute URL fails, try relative path
+    if (!response.ok) {
+      console.log('Absolute URL failed, trying relative path:', path);
+      response = await fetch(path, {
+        cache: 'no-cache',
+        headers: {
+          'Accept': 'text/markdown, text/plain, */*'
+        }
+      });
+    }
     
     if (!response.ok) {
       throw new Error(`Failed to load markdown file: ${response.status} ${response.statusText}`);
@@ -50,7 +77,7 @@ export const loadPostContent = async (markdownFile) => {
     
     // Check if we got HTML instead of markdown (common error)
     if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<!doctype')) {
-      console.error('Received HTML instead of markdown. Check file path:', path);
+      console.error('Received HTML instead of markdown. Check file path:', absoluteUrl);
       console.error('Response text preview:', text.substring(0, 200));
       throw new Error('Received HTML instead of markdown file. Check that the markdown file exists in public/blogs/');
     }
