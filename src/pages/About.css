@@ -1,0 +1,131 @@
+.about-page {
+  width: 100%;
+}
+
+.about-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.about-main {
+  flex: 1;
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.affiliation {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.bio-section {
+  margin-top: 1.5rem;
+}
+
+.bio-section p {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.highlight {
+  color: #ff4444;
+  font-weight: 500;
+}
+
+.about-sidebar {
+  flex-shrink: 0;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-picture {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #555;
+  display: block;
+}
+
+.profile-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1rem;
+  border: 3px solid #555;
+}
+
+.ai-headshot-label {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: #555;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.contact-info {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.contact-info p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.contact-link {
+  color: #ff4444;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #ff6666;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .about-sidebar {
+    width: 100%;
+    align-items: center;
+  }
+  
+  .name {
+    font-size: 2rem;
+  }
+}
+
